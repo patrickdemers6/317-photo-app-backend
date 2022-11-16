@@ -1,0 +1,6 @@
+{
+    "require": [
+        "mocha-suppress-logs",
+        "./mocha.env.js"
+    ]
+}
