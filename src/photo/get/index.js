@@ -70,7 +70,8 @@ const getPhoto = async (req, res) => {
     success: true,
     url: `https://storage.cloud.google.com/${bucketPrefix}-${userProfile.sub}/${file.name}`,
     created: metadata.timeCreated,
-    title: metadata.title
+    title: metadata.title,
+    description: metadata.description
   };
   console.log(`returning successfully with body: ${JSON.stringify(resBody)}`);
 

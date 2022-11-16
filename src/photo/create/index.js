@@ -98,7 +98,8 @@ exports.createPhoto = async (req, res) => {
       req.body.content,
       userProfile,
       req.body.type,
-      req.body.title
+      req.body.title,
+      req.body.description
     );
     console.info('successfully wrote to cloud');
   } catch (e) {
@@ -142,6 +143,7 @@ exports.createPhoto = async (req, res) => {
     const objectToSave = {
       objectID: file.name,
       title: req.body.title,
+      description: req.body.description || '',
       labels: labels.map((label) => label.description),
       email: userProfile.email.toLowerCase()
     };
@@ -175,11 +177,19 @@ exports.createPhoto = async (req, res) => {
   res.send({
     success: true,
     fileName: file.name,
+    title: req.body.title,
+    description: req.body.description || '',
     url: `https://storage.cloud.google.com/${bucketPrefix}-${userProfile.sub}/${file.name}`
   });
 };
 
-const writeFileToCloud = async (image, userProfile, imageType, title) => {
+const writeFileToCloud = async (
+  image,
+  userProfile,
+  imageType,
+  title,
+  description
+) => {
   const storage = new gcs.Storage();
   const bucketName = `${bucketPrefix}-${userProfile.sub}`;
   let bucket = storage.bucket(bucketName);
@@ -227,7 +237,7 @@ const writeFileToCloud = async (image, userProfile, imageType, title) => {
         reject(e);
       })
       .on('finish', async () => {
-        await file.setMetadata({ title });
+        await file.setMetadata({ title, description });
         resolve(file);
       });
   });

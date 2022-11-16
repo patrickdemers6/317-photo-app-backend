@@ -62,6 +62,7 @@ exports.search = async (req, res) => {
       data: hits.map((hit) => ({
         id: hit.objectID,
         title: hit.title,
+        description: hit.description,
         url: `https://storage.cloud.google.com/${bucketPrefix}-${userProfile.sub}/${hit.objectID}`
       }))
     });
