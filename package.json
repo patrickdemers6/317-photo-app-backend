@@ -9,7 +9,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "test": "mocha src/**/test/*.test.js"
+    "test": "mocha './{,!(node_modules)/**}/*.test.js'"
   },
   "engines": {
     "node": "16"
