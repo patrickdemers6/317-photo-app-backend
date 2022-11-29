@@ -5,9 +5,16 @@ The backend of a photo sharing application.
 Creates three GCP Cloud Functions.
 
 # Functions
-- Search - Search your uploaded images. Searches image content, description, and title.
+- Search - Search your uploaded images. Searches image content, description, and title. Only returns images you uploaded.
+    - Add a url paremeter `q` with the query to search for. Use `*` to search for all images.
+
 - Create Photo - Create a new photo. Image must be included as base 64.
-- Get Photo - get a photo based on it's ID.
+    - `type`: the type of the image. Example: `image/jpeg`
+    - `content`: The base64 content of the image.
+    - `title`: the title of the image.
+    - `description`: the description of the image.
+
+- Get Photo - get a photo based on its ID. `{URL}/{image_id}`.
 
 # Authorization
 To authenticate, you must use Google Cloud Oauth and include the credential as a Bearer token.
