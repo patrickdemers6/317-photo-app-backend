@@ -16,7 +16,8 @@ exports.search = async (req, res) => {
     res.set('Access-Control-Allow-Methods', 'POST');
     res.set('Access-Control-Allow-Headers', '*');
     res.set('Access-Control-Max-Age', '3600');
-    res.status(204).send('');
+    res.status(204);
+    res.send('');
     return;
   }
 

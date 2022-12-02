@@ -12,7 +12,8 @@ describe('search unit tests', () => {
     };
     const res = {
       send: sinon.stub(),
-      status: sinon.stub()
+      status: sinon.stub(),
+      set: sinon.stub()
     };
     await search(req, res);
 
@@ -32,10 +33,12 @@ describe('search unit tests', () => {
     };
     const res = {
       send: sinon.stub(),
-      status: sinon.stub()
+      status: sinon.stub(),
+      set: sinon.stub()
     };
     search(req, res);
 
+    console.log(res.status.lastCall);
     assert.equal(res.status.lastCall.args[0], 401, 'returns status code 401');
     assert.equal(
       res.send.calledOnceWith({ success: false, reason: UNAUTHORIZED }),

@@ -188,7 +188,8 @@ const getMocks = () => {
     req,
     res: {
       status: sinon.stub().returnsThis(),
-      send: sinon.stub().returnsThis()
+      send: sinon.stub().returnsThis(),
+      set: sinon.stub().returnsThis()
     }
   };
 };
