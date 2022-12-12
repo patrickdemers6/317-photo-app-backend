@@ -10,7 +10,7 @@ const { authorizedEmail, sub } = require('../../../test/helpers/jwt');
 /**
  * System tests which interact with real Google Cloud Platform services.
  */
-describe('system test', () => {
+describe('system test (long runtime)', () => {
 
   /**
    * Creates an image, searches for it, and gets it.
@@ -121,7 +121,7 @@ describe('system test', () => {
 
     // test createPhoto, search, and getPhoto
     await createSearchGet(storage);
-  }).timeout(30000);
+  }).timeout(40000);
 
   it('search yields results from correct email address', async () => {
     // setup algolia with two records
@@ -172,7 +172,7 @@ describe('system test', () => {
     // empty the algolia index for future tests
     await index.clearObjects();
     await new Promise((resolve) => setTimeout(resolve, 5000));
-  }).timeout(30000);
+  }).timeout(40000);
 
   describe('reject unauthorized', () => {
     it('create photo', async () => {

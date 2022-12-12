@@ -24,4 +24,6 @@ To run tests, follow these steps:
 1. `npm install`
 2. `npm run test`
 
-This will execute over 50 tests that thoroughly verify the code's functionality. Unit, integration, and system tests are run. The system tests will fail without proper environment variables set.
+This will execute over 50 tests that thoroughly verify the code's functionality. Unit, integration, and system tests are run.
+
+Screenshot of tests succeeding in `test_screenshots.png`.
